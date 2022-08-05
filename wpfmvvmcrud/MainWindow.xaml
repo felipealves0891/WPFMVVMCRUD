@@ -1,0 +1,43 @@
+﻿<Window x:Class="wpfmvvmcrud.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:wpfmvvmcrud"
+        mc:Ignorable="d"
+        Title="Lista de Funcionarios" 
+        Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal">
+            <Button Margin="3" Padding="3" Content="Novo"
+                    CommandParameter="{Binding}" Command="{Binding Novo}"/>
+            <Button Margin="3" Padding="3" Content="Editar"
+                    CommandParameter="{Binding}" Command="{Binding Editar}"/>
+            <Button Margin="3" Padding="3" Content="Deletar"
+                    CommandParameter="{Binding}" Command="{Binding Deletar}"/>
+        </StackPanel>
+        <ScrollViewer Grid.Row="1"
+                      HorizontalScrollBarVisibility="Visible"
+                      VerticalScrollBarVisibility="Hidden">
+            
+            <DataGrid AutoGenerateColumns="False" IsReadOnly="True"
+                      ItemsSource="{Binding Funcionarios}"
+                      SelectedItem="{Binding FuncionarioSelecionado}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Id" Binding="{Binding Id}" />
+                    <DataGridTextColumn Header="Nome" Binding="{Binding Nome}" />
+                    <DataGridTextColumn Header="Sobrenome" Binding="{Binding Sobrenome}" />
+                    <DataGridTextColumn Header="Data de Nascimento" Binding="{Binding DataNascimento}" />
+                    <DataGridTextColumn Header="Sexo"  Binding="{Binding Sexo}" />
+                    <DataGridTextColumn Header="Estado Civil" Binding="{Binding EstadoCivil}" />
+                    <DataGridTextColumn Header="Data de Admissão" Binding="{Binding DataAdmissao}" />
+                </DataGrid.Columns>
+            </DataGrid>
+            
+        </ScrollViewer>
+    </Grid>
+</Window>
